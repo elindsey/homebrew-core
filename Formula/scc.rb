@@ -13,6 +13,6 @@ class Scc < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/scc --version", 0)
+    assert_match version.to_s, shell_output("#{bin}/scc --version")
   end
 end
