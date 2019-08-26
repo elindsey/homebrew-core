@@ -13,6 +13,13 @@ class Scc < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/scc --version")
+    (testpath/"test.c").write <<~EOS
+      #include <stdio.h>
+      int main(void) {
+        return 0;
+      }
+    EOS
+
+    assert_match "C,test.c,test.c,4,4,0,0,0\n", shell_output("#{bin}/scc -fcsv test.c")
   end
 end
